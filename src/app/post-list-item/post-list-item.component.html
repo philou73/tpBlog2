@@ -1,12 +1,15 @@
 <li [ngClass]="{'list-group-item': true,
-				'list-group-item-success': loveIts > 0,
-				'list-group-item-danger': loveIts < 0}">
-	<div class="pull-right"><em>{{ created_at | date:"dd/MM/yyyy, HH:MM"}}</em></div>
-	<h2>{{ title }}</h2>
-	<p>{{ content }}</p>
+				'list-group-item-success': post.loveIts > 0,
+				'list-group-item-danger': post.loveIts < 0}">
+	<div class="pull-right"><em>{{ post.created_at | date:"dd/MM/yyyy, HH:mm"}}</em></div>
+	<h2>{{ post.title }}</h2>
+	<p>{{ post.content }}</p>
 	
 	<div class="navbar navbar-btn">
-		<button class="btn btn-success" (click)="onLike()">Love it !!</button>
-		<button class="btn btn-danger" (click)="onDislike()">Don't love it ...</button>
+		<button class="btn btn-success" (click)="onLike(post)">Love it !!</button>
+		<button class="btn btn-danger" (click)="onDislike(post)">Don't love it ...</button>
+		<button class="btn btn-default pull-right" (click)="onRemove(post)">
+			<span class="glyphicon glyphicon-trash"></span>
+		</button>
 	</div>
 </li>
